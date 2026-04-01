@@ -65,7 +65,7 @@ body {
   .isi {
   height: 80vh;
   background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-              url('background.jpg') no-repeat;
+              url('https://i.pinimg.com/1200x/b8/55/58/b85558babe5add613ac5f33cb3b05770.jpg') no-repeat;
    background-size: cover;
   background-position: center;
    display: flex;

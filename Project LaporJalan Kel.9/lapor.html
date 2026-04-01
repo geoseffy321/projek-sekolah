@@ -1,45 +1,168 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isi Laporan</title>
-</head>
-<body>
- <header>
-    <h1>ISI FORM LAPORAN</h1>
- </header>   
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Isi Laporan</title>
 
-<main>
-<section>
-    <form id="LaporForm" data-testid="LaporForm">
-          <div>
-            <label for="LaporFormTitle">Nama Pelapor</label>
-            <input id="LaporFormTitle" type="text" required data-testid="LaporFormTitleInput" />
-          </div>
-          <div>
-            <label for="LaporFormAuthor">Waktu</label>
-            <input id="LaporFormAuthor" type="text" required data-testid="LaporFormAuthorInput" />
-          </div>
-          <div>
-            <label for="LaporFormYear">Tempat</label>
-            <input id="LaporFormYear" type="number" required data-testid="LaporFormYearInput" />
-          </div>
-          <div>
-            <label for="LaporFormIsComplete">Selesai dibaca</label>
-            <input
-              id="LaporFormIsComplete"
-              type="checkbox"
-              data-testid="LaporFormIsCompleteCheckbox"
-            />
-          </div>
-          <button id="LaporFormSubmit" type="submit" data-testid="LaporFormSubmitButton">
-            Masukkan Buku ke rak <span>Belum selesai dibaca</span>
-          </button>
-        </form>
-      </section>
-</section>
-</main>
+<style>
+body {
+    font-family: Arial;
+    margin: 0;
+    background: #f6f7fb;
+}
+
+/* Layout utama */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Kiri */
+.left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.left-content h1 {
+    font-size: 40px;
+    color: #1abc9c;
+}
+
+.left-content p {
+    color: #777;
+}
+
+/* Kanan */
+.right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Card upload */
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 350px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* Upload button */
+.upload-btn {
+    background: #1abc9c;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.upload-btn:hover {
+    background: #1565c0;
+}
+
+.preview img {
+    max-width: 100%;
+    margin-top: 10px;
+}
+
+/* Form */
+form {
+    margin-top: 20px;
+    text-align: left;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #111;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- KIRI -->
+    <div class="left">
+        <div class="left-content">
+            <h1>Kirim Foto kerusakan Jalan </h1>
+            <p></p>
+        </div>
+    </div>
+
+    <!-- KANAN -->
+    <div class="right">
+        <div class="card">
+
+            <div class="upload-btn" onclick="fileInput.click()">Unggah Gambar</div>
+            <input type="file" id="fileInput" hidden>
+
+            <div class="preview" id="preview"></div>
+
+            <form>
+                <input type="text" placeholder="Nama Pelapor" required>
+                <input type="text" placeholder="Waktu" required>
+
+                <select required>
+                    <option value="">Pilih lokasi...</option>
+                    <option>Jalan</option>
+                    <option>Trotoar</option>
+                    <option>Jembatan</option>
+                </select>
+
+                <label>
+                    <input type="checkbox"> Selesai dibaca
+                </label>
+
+                <button type="submit">Masukkan Laporan</button>
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+const fileInput = document.getElementById("fileInput");
+const preview = document.getElementById("preview");
+
+fileInput.onchange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            preview.innerHTML = `<img src="${e.target.result}">`;
+        };
+        reader.readAsDataURL(file);
+    }
+};
+</script>
 
 </body>
 </html>
