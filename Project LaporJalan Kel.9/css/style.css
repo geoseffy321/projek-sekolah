@@ -123,3 +123,7 @@ footer {
   text-align: center;
   padding: 20px;
   }
+  .hallo {
+    color:#1abc9c;
+   transition: opacity 0.8s ease-in-out; 
+  }
